@@ -29,10 +29,10 @@ class CollaborationsService {
       text: 'DELETE FROM collaborations WHERE note_id = $1 AND user_id = $2 RETURNING id',
       values: [noteId, userId],
     };
- 
+
     const result = await this._pool.query(query);
- 
-    if (!result.rows[0].length) {
+
+    if (!result.rows.length) {
       throw new InvariantError('Kolaborasi gagal dihapus');
     }
   }
